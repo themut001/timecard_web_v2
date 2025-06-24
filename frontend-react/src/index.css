@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Liquid Glass効果のベースCSS */
+@layer base {
+  html {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+  }
+  
+  body {
+    @apply bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200;
+    @apply text-slate-900;
+    @apply min-h-screen;
+    @apply overflow-x-hidden;
+  }
+}
+
+@layer components {
+  /* Liquid Glass Card */
+  .liquid-glass {
+    @apply bg-white/80 backdrop-blur-liquid border border-slate-200;
+    @apply rounded-liquid shadow-liquid-light;
+    @apply relative overflow-hidden;
+  }
+  
+  .liquid-glass::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-white/20 to-transparent;
+    @apply rounded-liquid;
+    pointer-events: none;
+  }
+  
+  /* Liquid Button */
+  .liquid-button {
+    @apply liquid-glass px-6 py-3 text-sm font-medium;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:shadow-liquid-heavy hover:scale-105;
+    @apply active:scale-95;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-400/50;
+  }
+  
+  .liquid-button-primary {
+    @apply bg-gradient-to-r from-primary-500 to-secondary-500;
+    @apply text-white shadow-liquid-light;
+    @apply hover:from-primary-600 hover:to-secondary-600;
+  }
+  
+  .liquid-button-secondary {
+    @apply bg-gradient-to-r from-accent-500 to-primary-500;
+    @apply text-white shadow-liquid-light;
+    @apply hover:from-accent-600 hover:to-primary-600;
+  }
+  
+  /* Liquid Input */
+  .liquid-input {
+    @apply bg-white/90 border border-slate-300 rounded-liquid px-4 py-3 w-full;
+    @apply placeholder:text-slate-500 text-slate-900;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-500/70 focus:border-primary-500;
+    @apply transition-all duration-300;
+  }
+  
+  /* Liquid Navigation */
+  .liquid-nav {
+    @apply liquid-glass backdrop-blur-liquid;
+    @apply border-b border-glass-border/50;
+  }
+  
+  /* Liquid Sidebar */
+  .liquid-sidebar {
+    @apply liquid-glass h-full backdrop-blur-liquid;
+    @apply border-r border-glass-border/50;
+  }
+  
+  /* Floating Animation - Removed for better readability */
+  .liquid-float {
+    /* Animation removed */
+  }
+  
+  /* Pulse Glow Effect - Reduced */
+  .liquid-glow {
+    @apply shadow-lg;
+  }
+  
+  /* Shimmer Effect */
+  .liquid-shimmer {
+    @apply relative overflow-hidden;
+  }
+  
+  .liquid-shimmer::after {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent;
+    @apply animate-shimmer;
+    @apply -translate-x-full;
+  }
+  
+  /* Status Indicators */
+  .status-online {
+    @apply bg-gradient-to-r from-green-400 to-emerald-500;
+    @apply text-white;
+  }
+  
+  .status-offline {
+    @apply bg-gradient-to-r from-slate-400 to-slate-500;
+    @apply text-white;
+  }
+  
+  .status-break {
+    @apply bg-gradient-to-r from-yellow-400 to-orange-500;
+    @apply text-white;
+  }
+}
+
+@layer utilities {
+  /* Scrollbar Styling */
+  .scrollbar-liquid {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(139, 92, 246, 0.3) transparent;
+  }
+  
+  .scrollbar-liquid::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .scrollbar-liquid::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .scrollbar-liquid::-webkit-scrollbar-thumb {
+    background: rgba(139, 92, 246, 0.3);
+    border-radius: 4px;
+  }
+  
+  .scrollbar-liquid::-webkit-scrollbar-thumb:hover {
+    background: rgba(139, 92, 246, 0.5);
+  }
+  
+  /* Text Gradients */
+  .text-gradient-primary {
+    @apply bg-gradient-to-r from-primary-700 to-secondary-700 bg-clip-text text-transparent;
+  }
+  
+  .text-gradient-accent {
+    @apply bg-gradient-to-r from-accent-700 to-primary-700 bg-clip-text text-transparent;
+  }
+}
